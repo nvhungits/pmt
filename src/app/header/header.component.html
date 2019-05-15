@@ -1,0 +1,173 @@
+<!-- BEGIN HEADER -->
+<div class="header">
+  <div class="container">
+    <a *ngIf="company != undefined" class="site-logo" href="">
+      <img *ngIf="company.name == ''" src="../../assets/frontend/layout/img/logos/{{company.logo}}" alt="{{company.name}}"/>
+      <label *ngIf="company.name != ''">{{company.name}}</label>
+    </a>
+
+    <a href="javascript:void(0);" class="mobi-toggler"><i class="fa fa-bars"></i></a>
+
+    <!-- BEGIN CART 
+    <div class="top-cart-block">
+      <div class="top-cart-info">
+        <a href="javascript:void(0);" class="top-cart-info-count">3 items</a>
+        <a href="javascript:void(0);" class="top-cart-info-value">$1260</a>
+      </div>
+      <i class="fa fa-shopping-cart"></i>
+                    
+      <div class="top-cart-content-wrapper">
+        <div class="top-cart-content">
+          <ul class="scroller" style="height: 250px;">
+            <li>
+              <a href="shop-item.html"><img src="../../assets/frontend/pages/img/cart-img.jpg" alt="Rolex Classic Watch" width="37" height="34"></a>
+              <span class="cart-content-count">x 1</span>
+              <strong><a href="shop-item.html">Rolex Classic Watch</a></strong>
+              <em>$1230</em>
+              <a href="javascript:void(0);" class="del-goods">&nbsp;</a>
+            </li>
+            <li>
+              <a href="shop-item.html"><img src="../../assets/frontend/pages/img/cart-img.jpg" alt="Rolex Classic Watch" width="37" height="34"></a>
+              <span class="cart-content-count">x 1</span>
+              <strong><a href="shop-item.html">Rolex Classic Watch</a></strong>
+              <em>$1230</em>
+              <a href="javascript:void(0);" class="del-goods">&nbsp;</a>
+            </li>
+            <li>
+              <a href="shop-item.html"><img src="../../assets/frontend/pages/img/cart-img.jpg" alt="Rolex Classic Watch" width="37" height="34"></a>
+              <span class="cart-content-count">x 1</span>
+              <strong><a href="shop-item.html">Rolex Classic Watch</a></strong>
+              <em>$1230</em>
+              <a href="javascript:void(0);" class="del-goods">&nbsp;</a>
+            </li>
+            <li>
+              <a href="shop-item.html"><img src="../../assets/frontend/pages/img/cart-img.jpg" alt="Rolex Classic Watch" width="37" height="34"></a>
+              <span class="cart-content-count">x 1</span>
+              <strong><a href="shop-item.html">Rolex Classic Watch</a></strong>
+              <em>$1230</em>
+              <a href="javascript:void(0);" class="del-goods">&nbsp;</a>
+            </li>
+            <li>
+              <a href="shop-item.html"><img src="../../assets/frontend/pages/img/cart-img.jpg" alt="Rolex Classic Watch" width="37" height="34"></a>
+              <span class="cart-content-count">x 1</span>
+              <strong><a href="shop-item.html">Rolex Classic Watch</a></strong>
+              <em>$1230</em>
+              <a href="javascript:void(0);" class="del-goods">&nbsp;</a>
+            </li>
+            <li>
+              <a href="shop-item.html"><img src="../../assets/frontend/pages/img/cart-img.jpg" alt="Rolex Classic Watch" width="37" height="34"></a>
+              <span class="cart-content-count">x 1</span>
+              <strong><a href="shop-item.html">Rolex Classic Watch</a></strong>
+              <em>$1230</em>
+              <a href="javascript:void(0);" class="del-goods">&nbsp;</a>
+            </li>
+            <li>
+              <a href="shop-item.html"><img src="../../assets/frontend/pages/img/cart-img.jpg" alt="Rolex Classic Watch" width="37" height="34"></a>
+              <span class="cart-content-count">x 1</span>
+              <strong><a href="shop-item.html">Rolex Classic Watch</a></strong>
+              <em>$1230</em>
+              <a href="javascript:void(0);" class="del-goods">&nbsp;</a>
+            </li>
+            <li>
+              <a href="shop-item.html"><img src="../../assets/frontend/pages/img/cart-img.jpg" alt="Rolex Classic Watch" width="37" height="34"></a>
+              <span class="cart-content-count">x 1</span>
+              <strong><a href="shop-item.html">Rolex Classic Watch</a></strong>
+              <em>$1230</em>
+              <a href="javascript:void(0);" class="del-goods">&nbsp;</a>
+            </li>
+          </ul>
+          <div class="text-right">
+            <a href="shop-shopping-cart.html" class="btn btn-default">View Cart</a>
+            <a href="shop-checkout.html" class="btn btn-primary">Checkout</a>
+          </div>
+        </div>
+      </div>            
+    </div>
+    END CART -->
+
+    <!-- BEGIN NAVIGATION -->
+    <div class="header-navigation">
+      <ul>
+        <li class="dropdown dropdown100 nav-catalogue">
+          <a class="dropdown-toggle" data-toggle="dropdown" data-target="#" href="javascript:;">
+            Sản Phẩm Phúc Minh Tâm
+            
+          </a>
+          <ul class="dropdown-menu">
+            <li>
+              <div class="header-navigation-content">
+                <div class="row" *ngIf="products != undefined">
+                  <div class="col-md-3 col-sm-4 col-xs-6" *ngFor="let item of getProductByCategoryId(1)">
+                    <div class="product-item">
+                      <div class="pi-img-wrapper">
+                        <a href="#"><img src="../../assets/frontend/pages/img/products/{{item.image}}" class="img-responsive" alt="{{item.name}}"></a>
+                      </div>
+                      <h3><a href="#">{{item.name}}</a></h3>
+                      <div class="pi-price">{{item.price | currency:item.unit}}</div>
+                      <!--
+                        "Currency code"  ISO 4217
+                        https://en.wikipedia.org/wiki/ISO_4217
+                      -->
+                      <!--<a href="javascript:;" class="btn btn-default add2cart">Add to cart</a>-->
+                    </div>
+                  </div>
+                 
+                </div>
+              </div>
+            </li>
+          </ul>
+        </li>
+        <li class="dropdown dropdown-megamenu">
+            <a class="dropdown-toggle" data-toggle="dropdown" data-target="#" href="javascript:;">
+              Sản Phẩm MOCHA
+              
+            </a>
+            <ul class="dropdown-menu">
+              <li>
+                <div class="header-navigation-content">
+                  <div class="row" *ngIf="subcategories != undefined">
+                    <div class="col-md-4 header-navigation-col" *ngFor="let item of getSubcategoryByCategoryId(2)">
+                      <h4>{{item.name}}</h4>
+                      <ul>
+                        <li *ngFor="let subitem of getProductBySubCategoryIdAndCategoryId(item.id, item.category_id)"><a href="#">{{subitem.name}}</a></li>
+                      </ul>
+                    </div>
+                    <!--
+                    <div class="col-md-12 nav-brands">
+                      <ul>
+                        <li><a href="#"><img title="esprit" alt="esprit" src="../../assets/frontend/pages/img/brands/esprit.jpg"></a></li>
+                        <li><a href="#"><img title="gap" alt="gap" src="../../assets/frontend/pages/img/brands/gap.jpg"></a></li>
+                        <li><a href="#"><img title="next" alt="next" src="../../assets/frontend/pages/img/brands/next.jpg"></a></li>
+                        <li><a href="#"><img title="puma" alt="puma" src="../../assets/frontend/pages/img/brands/puma.jpg"></a></li>
+                        <li><a href="#"><img title="zara" alt="zara" src="../../assets/frontend/pages/img/brands/zara.jpg"></a></li>
+                      </ul>
+                    </div>
+                    -->
+                  </div>
+                </div>
+              </li>
+            </ul>
+          </li>
+       
+        <!-- BEGIN TOP SEARCH -->
+        <li class="menu-search">
+          <span class="sep"></span>
+          <i class="fa fa-search search-btn"></i>
+          <div class="search-box">
+            <form action="#">
+              <div class="input-group">
+                <input type="text" placeholder="Search" class="form-control">
+                <span class="input-group-btn">
+                  <button class="btn btn-primary" type="submit">Search</button>
+                </span>
+              </div>
+            </form>
+          </div> 
+        </li>
+        <!-- END TOP SEARCH -->
+      </ul>
+    </div>
+    <!-- END NAVIGATION -->
+  </div>
+</div>
+<!-- Header END -->
