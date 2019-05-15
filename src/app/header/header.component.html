@@ -2,7 +2,7 @@
 <div class="header">
   <div class="container">
     <a *ngIf="company != undefined" class="site-logo" href="">
-      <img *ngIf="company.name == ''" src="../../assets/frontend/layout/img/logos/{{company.logo}}" alt="{{company.name}}"/>
+      <img *ngIf="company.name == ''" src="https://phucminhtam.net/assets/frontend/layout/img/logos/{{company.logo}}" alt="{{company.name}}"/>
       <label *ngIf="company.name != ''">{{company.name}}</label>
     </a>
 
@@ -100,7 +100,7 @@
                   <div class="col-md-3 col-sm-4 col-xs-6" *ngFor="let item of getProductByCategoryId(1)">
                     <div class="product-item">
                       <div class="pi-img-wrapper">
-                        <a href="#"><img src="../../assets/frontend/pages/img/products/{{item.image}}" class="img-responsive" alt="{{item.name}}"></a>
+                        <a href="#"><img src="https://phucminhtam.net/assets/frontend/pages/img/products/{{item.image}}" class="img-responsive" alt="{{item.name}}"></a>
                       </div>
                       <h3><a href="#">{{item.name}}</a></h3>
                       <div class="pi-price">{{item.price | currency:item.unit}}</div>
