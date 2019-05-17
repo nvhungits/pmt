@@ -24,7 +24,6 @@ export class TopbarComponent implements OnInit {
           }
         }
       }
-      console.log(this.company);
     })
   }
 
