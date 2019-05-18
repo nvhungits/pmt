@@ -21,7 +21,8 @@ export class HeaderComponent implements OnInit {
   ngOnInit() {
     this.apiService.getProduct().subscribe((products: Product[])=>{
       this.products = products;
-    })
+      console.log(this.products)
+    });
 
     this.apiService.getCompanyInfo().subscribe((companies: Company[])=>{
       if(companies.length > 0)
@@ -33,11 +34,11 @@ export class HeaderComponent implements OnInit {
           }
         }
       }
-    })
-
+    });
+ 
     this.apiService.getSubcategory().subscribe((subcategories: Subcategory[])=>{
       this.subcategories = subcategories;
-    })
+    });
   }
 
   getSubcategoryByCategoryId(categoryId){
