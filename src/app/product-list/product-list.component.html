@@ -85,13 +85,13 @@
       <div class="col-md-4 col-sm-6 col-xs-12" *ngFor="let product of products">
         <div class="product-item">
           <div class="pi-img-wrapper">
-            <img [src]="DomSanitizer.bypassSecurityTrustUrl(product.image_base64)" class="img-responsive" alt="{{product.name}}">
+            <img [src]="DomSanitizer.bypassSecurityTrustUrl(product.image_base64)" height="200px" class="img-responsive productList-image" alt="{{product.name}}">
             <div>
-              <a href="#" class="btn btn-default fancybox-button">Phóng to</a>
-              <a href="#productlist-pop-up" class="btn btn-default fancybox-fast-view">Chi tiết</a>
+              <a href="{{product.image_base64}}" class="btn btn-default fancybox-button">Phóng to</a>
+              <a href="#productlist-pop-up" (click)="viewProductDetail(product)" class="btn btn-default fancybox-fast-view">Chi tiết</a>
             </div>
           </div>
-          <h3><a href="shop-item.html">{{product.name}}</a></h3>
+          <h3 class="productList-title"><a href="shop-item.html">{{product.name}}</a></h3>
           <div class="pi-price">{{product.price|currency:product.unit}}</div>
           <!--<a href="javascript:;" class="btn btn-default add2cart">Add to cart</a>-->
         </div>
@@ -121,23 +121,23 @@
 <!-- END SIDEBAR & CONTENT -->
 
  <!-- BEGIN fast view of a product -->
- <div id="productlist-pop-up" style="display: none; width: 700px;">
+ <div id="productlist-pop-up" style="display: none; width: 700px;" *ngIf="productDetail != undefined">
     <div class="product-page productlist-pop-up">
       <div class="row">
         <div class="col-md-6 col-sm-6 col-xs-3">
           <div class="product-main-image">
-            <img src="http://phucminhtam.net/assets/frontend/pages/img/products/hongam1.jpg" alt="HỒNG ÂM (PMT) – KÉN ĐẶT PHỤ KHOA" class="img-responsive">
+            <img [src]="DomSanitizer.bypassSecurityTrustUrl(productDetail.image_base64)" alt="{{productDetail.name}}" class="img-responsive">
           </div>
           <div class="product-other-images">
-            <a href="javascript:;" class="active"><img alt="Berry Lace Dress" src="http://phucminhtam.net/assets/frontend/pages/img/products/hongam1.jpg"></a>
-            <a href="javascript:;"><img alt="Berry Lace Dress" src="http://phucminhtam.net/assets/frontend/pages/img/products/hongam2.jpg"></a>
+            <a href="javascript:;" class="active"><img alt="{{productDetail.name}}" [src]="DomSanitizer.bypassSecurityTrustUrl(productDetail.image_base64)"></a>
+            <a href="javascript:;"><img alt="{{productDetail.name}}" [src]="DomSanitizer.bypassSecurityTrustUrl(productDetail.image_base64)"></a>
           </div>
         </div>
         <div class="col-md-6 col-sm-6 col-xs-9">
-          <h2>HỒNG ÂM (PMT) – KÉN ĐẶT PHỤ KHOA</h2>
+          <h2>{{productDetail.name}}</h2>
           <div class="price-availability-block clearfix">
             <div class="price">
-              <strong>700.000<span>đ</span></strong>
+              <strong>{{productDetail.price | currency:productDetail.unit}}</strong>
               <em><span>1000.000</span>đ</em>
             </div>
             <div class="availability">
@@ -145,24 +145,24 @@
             </div>
           </div>
           <div class="description">
-            <p>Dành cho phụ nữ bị viêm, nấm, ngứa, viêm nhiễm âm đạo, khí hư ra nhiều….Điều trị tất cả các bệnh phụ khoa của phụ nữ</p>
+            <p>{{productDetail.description}}</p>
           </div>
           <div class="product-page-options">
             <div class="pull-left">
               <div class="control-label">Lưu ý:</div>
-              <p>Trong lúc đặt thuốc kiêng quan hệ, không dành cho phụ nữ có thai và trẻ em dưới 15 tuổi.</p>
+              <p></p>
             </div>
             <div class="pull-left">
               <div class="control-label">Hướng dẫn sử dụng:</div>
-              <p>Hoà tan 1 gói xông rửa với 500ml nước đun sôi, ngồi xông hơi nước cho đến khi nước ngội thì đổ ra chậu ngồi ngân trực tiếp 10-15 phút rồi rửa.</p>
+              <p></p>
             </div>
           </div>
           <div class="product-page-cart">
             <div class="product-quantity">
                 <input id="product-quantity" type="text" value="1" readonly name="product-quantity" class="form-control input-sm">
             </div>
-            <button class="btn btn-primary" type="submit">Add to cart</button>
-            <a href="shop-item.html" class="btn btn-default">More details</a>
+            <!--<button class="btn btn-primary" type="submit">Add to cart</button>-->
+            <a href="#" class="btn btn-default">Chi tiết sản phẩm</a>
           </div>
         </div>
 

@@ -15,6 +15,7 @@ export class ProductListComponent implements OnInit {
   products:  Product[];
   subcategories:  Subcategory[];
   company:  Company;
+  productDetail: Product;
 
   constructor(private apiService: ApiService, private DomSanitizer: DomSanitizer) { }
 
@@ -55,6 +56,10 @@ export class ProductListComponent implements OnInit {
         }
     }
     return products;
+  }
+
+  viewProductDetail(item){
+    this.productDetail = item;
   }
 
 }

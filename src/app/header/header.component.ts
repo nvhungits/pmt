@@ -21,7 +21,6 @@ export class HeaderComponent implements OnInit {
   ngOnInit() {
     this.apiService.getProduct().subscribe((products: Product[])=>{
       this.products = products;
-      console.log(this.products)
     });
 
     this.apiService.getCompanyInfo().subscribe((companies: Company[])=>{

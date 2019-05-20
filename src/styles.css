@@ -1,1 +1,6 @@
-/* You can add global styles to this file, and also import other style files */
+.productList-image{
+    height:200px !important;
+}
+.productList-title{
+    height: 50px;
+}
