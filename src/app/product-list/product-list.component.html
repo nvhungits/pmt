@@ -145,17 +145,14 @@
             </div>
           </div>
           <div class="description">
-            <p>{{productDetail.description}}</p>
+            <p [innerHTML]="DomSanitizer.bypassSecurityTrustHtml(productDetail.description)"></p>
           </div>
           <div class="product-page-options">
             <div class="pull-left">
-              <div class="control-label">Lưu ý:</div>
+              <div class="control-label"></div>
               <p></p>
             </div>
-            <div class="pull-left">
-              <div class="control-label">Hướng dẫn sử dụng:</div>
-              <p></p>
-            </div>
+            
           </div>
           <div class="product-page-cart">
             <div class="product-quantity">
