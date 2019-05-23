@@ -40,7 +40,7 @@
     <div class="sidebar-products clearfix" *ngIf="products != undefined">
       <h2>Sản phẩm bán chạy nhất</h2>
       <div class="item" *ngFor="let product of products">
-        <a href="#"><img [src]="DomSanitizer.bypassSecurityTrustUrl(product.image_base64)" alt="{{product.name}}"></a>
+        <a routerLink="/product/{{product.id}}"><img [src]="DomSanitizer.bypassSecurityTrustUrl(product.image_base64)" alt="{{product.name}}"></a>
         <h3><a routerLink="/product/{{product.id}}">{{product.name}}</a></h3>
         <div class="price">{{product.price|currency:product.unit}}</div>
       </div>
@@ -96,7 +96,7 @@
               <a href="#productlist-pop-up" (click)="viewProductDetail(product)" class="btn btn-default fancybox-fast-view">Chi tiết</a>
             </div>
           </div>
-          <h3 class="productList-title"><a href="shop-item.html">{{product.name}}</a></h3>
+          <h3 class="productList-title"><a routerLink="/product/{{product.id}}">{{product.name}}</a></h3>
           <div class="pi-price">{{product.price|currency:product.unit}}</div>
           <!--<a href="javascript:;" class="btn btn-default add2cart">Add to cart</a>-->
         </div>
