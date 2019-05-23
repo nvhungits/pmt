@@ -3,7 +3,9 @@ import { ApiService } from '../api.service';
 import { Product } from '../product';
 import { Company } from '../company';
 import { Subcategory } from '../subcategory';
-import { DomSanitizer } from '@angular/platform-browser'
+import { DomSanitizer } from '@angular/platform-browser';
+import { ActivatedRoute, } from "@angular/router";
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-product-list',
@@ -16,15 +18,38 @@ export class ProductListComponent implements OnInit {
   subcategories:  Subcategory[];
   company:  Company;
   productDetail: Product;
+  category_id: number;
+  subcategory_id: number
 
-  constructor(private apiService: ApiService, private DomSanitizer: DomSanitizer) { }
+  constructor(private route: ActivatedRoute, private router: Router, private apiService: ApiService, private DomSanitizer: DomSanitizer) { 
+    this.router.routeReuseStrategy.shouldReuseRoute = () => false;
+  }
 
   ngOnInit() {
+
+    this.route.paramMap.subscribe(params => {
+        this.category_id = parseInt(params.get("category_id"));
+        //console.log(this.category_id);
+        this.subcategory_id = parseInt(params.get("subcategory_id"));
+        //console.log(this.subcategory_id);
+    })
+
     this.apiService.getProduct().subscribe((products: Product[])=>{
       this.products = products;
+      //console.log(this.products);
+      if(this.category_id && this.subcategory_id){
+        this.products = this.getProductBySubCategoryIdAndCategoryId(this.subcategory_id, this.category_id);
+        //console.log(this.products);
+      }
+      else if(this.category_id){
+        this.products = this.getProductByCategoryId(this.category_id);
+        //console.log(this.products);
+      }
     });
+
     this.apiService.getSubcategory().subscribe((subcategories: Subcategory[])=>{
       this.subcategories = subcategories;
+      //console.log("this.subcategories", this.subcategories);
     });
   }
 
@@ -33,6 +58,7 @@ export class ProductListComponent implements OnInit {
     for(let i = 0; i < this.subcategories.length; i++){
         if(this.subcategories[i].category_id == categoryId){
           subcategories.push(this.subcategories[i]);
+          //console.log("this.subcategories", this.subcategories);
         }
     }
     return subcategories;

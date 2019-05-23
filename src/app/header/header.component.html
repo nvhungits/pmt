@@ -100,7 +100,7 @@
                   <div class="col-md-3 col-sm-4 col-xs-6" *ngFor="let item of getProductByCategoryId(1)">
                     <div class="product-item">
                       <div class="pi-img-wrapper">
-                        <a href="#"><img [src]="DomSanitizer.bypassSecurityTrustUrl(item.image_base64)" class="img-responsive productList-image" alt="{{item.name}}"></a>
+                        <a routerLink="/product/{{item.id}}"><img [src]="DomSanitizer.bypassSecurityTrustUrl(item.image_base64)" class="img-responsive productList-image" alt="{{item.name}}"></a>
                       </div>
                       <h3 class="productList-title"><a href="#">{{item.name}}</a></h3>
                       <div class="pi-price">{{item.price | currency:item.unit}}</div>
@@ -126,10 +126,12 @@
               <li>
                 <div class="header-navigation-content">
                   <div class="row" *ngIf="subcategories != undefined">
-                    <div class="col-md-4 header-navigation-col" *ngFor="let item of getSubcategoryByCategoryId(2)">
-                      <h4>{{item.name}}</h4>
+                    <div class="col-md-4 header-navigation-col" *ngFor="let sub of getSubcategoryByCategoryId(2)">
+                      <h4><a routerLink="products/{{sub.category_id}}/{{sub.id}}">{{sub.name}}</a></h4>
                       <ul *ngIf="products != undefined">
-                        <li *ngFor="let subitem of getProductBySubCategoryIdAndCategoryId(item.id, item.category_id)" style="overflow: hidden;"><a href="#">{{subitem.name}}</a></li>
+                        <li *ngFor="let p of getProductBySubCategoryIdAndCategoryId(sub.id, sub.category_id)" style="overflow: hidden;">
+                          <a routerLink="product/{{p.id}}">{{p.name}}</a>
+                        </li>
                       </ul>
                     </div>
                     <!--

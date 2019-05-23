@@ -3,7 +3,8 @@ import { ApiService } from '../api.service';
 import { Product } from '../product';
 import { Company } from '../company';
 import { Subcategory } from '../subcategory';
-import { DomSanitizer } from '@angular/platform-browser'
+import { DomSanitizer } from '@angular/platform-browser';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-header',
@@ -12,7 +13,9 @@ import { DomSanitizer } from '@angular/platform-browser'
 })
 export class HeaderComponent implements OnInit {
 
-  constructor(private apiService: ApiService, private DomSanitizer: DomSanitizer) { }
+  constructor(private apiService: ApiService, private router: Router, private DomSanitizer: DomSanitizer) {
+    this.router.routeReuseStrategy.shouldReuseRoute = () => false;
+   }
 
   products:  Product[];
   subcategories:  Subcategory[];
