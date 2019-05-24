@@ -3,6 +3,7 @@ import { NgModule } from '@angular/core';
 
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from  '@angular/forms';
+import { HashLocationStrategy, LocationStrategy } from '@angular/common';
 
 
 import { AppRoutingModule } from './app-routing.module';
@@ -36,7 +37,12 @@ import { DetailsComponent } from './products/details/details.component';
     FormsModule,
     AppRoutingModule
   ],
-  providers: [],
+  providers: [
+    {
+      provide: LocationStrategy, 
+      useClass: HashLocationStrategy
+    }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
