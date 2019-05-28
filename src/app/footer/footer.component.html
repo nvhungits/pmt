@@ -42,7 +42,7 @@
         <div class="col-md-4 steps-block-col">
           <i class="fa fa-phone"></i>
           <div>
-            <h2>0389034045</h2>
+            <h2 *ngIf="company != undefined">{{company.phone}}</h2>
             <em>Hỗ trợ 24/7</em>
           </div>
         </div>
@@ -54,16 +54,14 @@
   <!-- BEGIN PRE-FOOTER -->
   <div class="pre-footer">
     <div class="container">
-      <div class="row">
+      <div class="row" *ngIf="company != undefined">
         <!-- BEGIN BOTTOM ABOUT BLOCK -->
         <div class="col-md-3 col-sm-6 pre-footer-col">
           <h2>Thông Tin</h2>
-          <p>Công Ty Phúc Minh Tâm
-Chuyên phân phối các sản phẩm làm đẹp, phụ khoa trên toàn quốc.
-509 Đường đại mỗ, Phường đại mỗ, Quận Nam Từ Liêm, Hà nội.
+          <p>{{company.detail}}
           </p>
-          <p>Hotline: 0896.632.369(zalo)</p>
-          <p>Email: congtyphucminhtam@gmail.com </p>
+          <p>Hotline: {{company.hotline}}</p>
+          <p>Email: {{company.email_company}} </p>
         </div>
         <!-- END BOTTOM ABOUT BLOCK -->
         <!-- BEGIN BOTTOM INFO BLOCK -->
@@ -90,11 +88,10 @@ Chuyên phân phối các sản phẩm làm đẹp, phụ khoa trên toàn quố
         <div class="col-md-3 col-sm-6 pre-footer-col">
           <h2>Our Contacts</h2>
           <address class="margin-bottom-40">
-            Tân Hương<br>
-            Tân Quý, Tân Phú, Hồ Chí Minh<br>
-            Phone: 0389034045<br>
-            Email: <a href="mailto:nguyenhuong0389034045@gmail.com">nguyenhuong0389034045@gmail.com</a><br>
-            Skype: <a href="skype:nguyenhuong0389034045">nguyenhuong0389034045</a>
+            {{company.address}}<br>
+            Phone: {{company.phone}}<br>
+            Email: <a href="mailto:{{company.email_personal}}">{{company.email_personal}}</a><br>
+            Skype: <a href="skype:{{company.skype}}">{{company.skype}}</a>
           </address>
         </div>
         <!-- END BOTTOM CONTACTS -->

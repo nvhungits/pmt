@@ -11,4 +11,5 @@ export  class  Company {
     hotline: string;
     skype: string;
     logo_base64: string;
+    detail: string;
 }
