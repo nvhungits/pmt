@@ -14,7 +14,7 @@ import { Router } from '@angular/router';
 export class HeaderComponent implements OnInit {
 
   constructor(private apiService: ApiService, private router: Router, private DomSanitizer: DomSanitizer) {
-    this.router.routeReuseStrategy.shouldReuseRoute = () => false;
+    
    }
 
   products:  Product[];
