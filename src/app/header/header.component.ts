@@ -20,10 +20,33 @@ export class HeaderComponent implements OnInit {
   products:  Product[];
   subcategories:  Subcategory[];
   company:  Company;
+  cartItems: Product[] = []
+  cartItemsInfo = {
+    count: 0,
+    total_price: 0,
+    unit: "VND"
+  }
 
   ngOnInit() {
+
+    var _cartItems = localStorage.getItem('carts');
+    var productIds = _cartItems != undefined ? JSON.parse(_cartItems) : [];
+    console.log(productIds);
     this.apiService.getProduct().subscribe((products: Product[])=>{
       this.products = products;
+      for(var i = 0; i < productIds.length; i++){
+        for(var j = 0; j < products.length; j++){
+          if(products[j].id == productIds[i].id){
+            var item = products[j];
+            item.quantity = productIds[i].quantity
+            this.cartItems.push(item);
+            this.cartItemsInfo.count++;
+            this.cartItemsInfo.total_price += (parseInt(products[j].price)*productIds[i].quantity);
+            break;
+          }
+        }
+      }
+      console.log(this.cartItems);
     });
 
     this.apiService.getCompanyInfo().subscribe((companies: Company[])=>{

@@ -88,4 +88,27 @@ export class ProductListComponent implements OnInit {
     this.productDetail = item;
   }
 
+  addToCarts(id){
+    var _cartItems = localStorage.getItem('carts');
+    var cartItems = _cartItems != undefined ? JSON.parse(_cartItems) : [];
+    console.log(id, cartItems);
+
+    var duplicate = false;
+    for(var i = 0; i < cartItems.length; i++){
+      if(cartItems[i].id == id){
+        cartItems[i].quantity++;
+        duplicate = true;
+        break;
+      }
+    }
+    if(!duplicate){
+      cartItems.push({
+        "id": id,
+        "quantity": 1
+      });
+    }
+    localStorage.setItem('carts', JSON.stringify(cartItems));
+    console.log(cartItems);
+  }
+
 }

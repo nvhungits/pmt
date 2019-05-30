@@ -9,4 +9,5 @@ export  class  Product {
     category_id: number;
     subcategory_id: number;
     image_base64: string;
+    quantity: number;
 }

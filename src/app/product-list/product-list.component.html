@@ -55,7 +55,7 @@
           </div>
           <h3 class="productList-title"><a routerLink="/product/{{product.id}}">{{product.name}}</a></h3>
           <div class="pi-price">{{product.price|currency:product.unit}}</div>
-          <!--<a href="javascript:;" class="btn btn-default add2cart">Add to cart</a>-->
+          <a (click)="addToCarts(product.id)" class="btn btn-default add2cart">Thêm vào giỏ</a>
         </div>
       </div>
       <!-- PRODUCT ITEM END -->
