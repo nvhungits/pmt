@@ -22,7 +22,10 @@ export class CartListComponent implements OnInit {
   constructor(private apiService: ApiService, private DomSanitizer: DomSanitizer) { }
 
   ngOnInit() {
+    this.getCartItems();
+  }
 
+  getCartItems(){
     this.isLoading = true;
     var _cartItems = localStorage.getItem('carts');
     var productIds = _cartItems != undefined ? JSON.parse(_cartItems) : [];
@@ -41,7 +44,6 @@ export class CartListComponent implements OnInit {
       this.summaryCartItems(this.cartItems);
       this.isLoading = false;
     });
-
   }
 
   removeCartItems(item){

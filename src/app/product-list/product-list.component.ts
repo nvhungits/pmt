@@ -29,27 +29,21 @@ export class ProductListComponent implements OnInit {
 
     this.route.paramMap.subscribe(params => {
         this.category_id = parseInt(params.get("category_id"));
-        //console.log(this.category_id);
         this.subcategory_id = parseInt(params.get("subcategory_id"));
-        //console.log(this.subcategory_id);
     })
 
     this.apiService.getProduct().subscribe((products: Product[])=>{
       this.products = products;
-      //console.log(this.products);
       if(this.category_id && this.subcategory_id){
         this.products = this.getProductBySubCategoryIdAndCategoryId(this.subcategory_id, this.category_id);
-        //console.log(this.products);
       }
       else if(this.category_id){
         this.products = this.getProductByCategoryId(this.category_id);
-        //console.log(this.products);
       }
     });
 
     this.apiService.getSubcategory().subscribe((subcategories: Subcategory[])=>{
       this.subcategories = subcategories;
-      //console.log("this.subcategories", this.subcategories);
     });
   }
 
@@ -58,7 +52,6 @@ export class ProductListComponent implements OnInit {
     for(let i = 0; i < this.subcategories.length; i++){
         if(this.subcategories[i].category_id == categoryId){
           subcategories.push(this.subcategories[i]);
-          //console.log("this.subcategories", this.subcategories);
         }
     }
     return subcategories;
@@ -91,7 +84,6 @@ export class ProductListComponent implements OnInit {
   addToCarts(id){
     var _cartItems = localStorage.getItem('carts');
     var cartItems = _cartItems != undefined ? JSON.parse(_cartItems) : [];
-    console.log(id, cartItems);
 
     var duplicate = false;
     for(var i = 0; i < cartItems.length; i++){
@@ -108,7 +100,6 @@ export class ProductListComponent implements OnInit {
       });
     }
     localStorage.setItem('carts', JSON.stringify(cartItems));
-    console.log(cartItems);
   }
 
 }
