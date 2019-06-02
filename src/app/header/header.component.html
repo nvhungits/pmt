@@ -11,13 +11,17 @@
     <!-- BEGIN CART -->
     <div class="top-cart-block" *ngIf="cartItemsInfo != undefined">
       <div class="top-cart-info">
-        <a href="javascript:void(0);" class="top-cart-info-count">{{cartItemsInfo.count}} {{cartItemsInfo.count > 0 ? 'items' : 'item'}}</a>
+        <a href="javascript:void(0);" class="top-cart-info-count">{{cartItemsInfo.count}} sản phẩm</a>
         <a href="javascript:void(0);" class="top-cart-info-value">{{cartItemsInfo.total_price | currency:cartItemsInfo.unit}}</a>
       </div>
       <i class="fa fa-shopping-cart"></i>
                     
       <div class="top-cart-content-wrapper">
-        <div class="top-cart-content">
+        <div class="top-cart-content" *ngIf="cartItems.length == 0" style="text-align:center;">
+          Không có sản phẩm nào được chọn
+        </div>
+
+        <div class="top-cart-content" *ngIf="cartItems.length > 0">
           <ul class="scroller" style="height: 250px;">
             <li *ngFor="let cart of cartItems; let i = index">
               <a routerLink="/product/{{cart.id}}">
@@ -26,12 +30,12 @@
               <span class="cart-content-count">x {{cart.quantity}}</span>
               <strong><a href="shop-item.html">{{cart.name}}</a></strong>
               <em>{{cart.price*cart.quantity | currency:cart.unit}}</em>
-              <a href="javascript:void(0);" class="del-goods">&nbsp;</a>
+              <a (click)="removeCartItems(cart)" class="del-goods">&nbsp;</a>
             </li> 
           </ul>
           <div class="text-right">
-            <a href="shop-shopping-cart.html" class="btn btn-default">View Cart</a>
-            <a href="shop-checkout.html" class="btn btn-primary">Checkout</a>
+            <a routerLink="/cart" class="btn btn-default">Xem giỏ hàng</a>
+            <a routerLink="#" class="btn btn-primary">Thanh Toán</a>
           </div>
         </div>
       </div>            

@@ -31,7 +31,6 @@ export class HeaderComponent implements OnInit {
 
     var _cartItems = localStorage.getItem('carts');
     var productIds = _cartItems != undefined ? JSON.parse(_cartItems) : [];
-    console.log(productIds);
     this.apiService.getProduct().subscribe((products: Product[])=>{
       this.products = products;
       for(var i = 0; i < productIds.length; i++){
@@ -40,13 +39,11 @@ export class HeaderComponent implements OnInit {
             var item = products[j];
             item.quantity = productIds[i].quantity
             this.cartItems.push(item);
-            this.cartItemsInfo.count++;
-            this.cartItemsInfo.total_price += (parseInt(products[j].price)*productIds[i].quantity);
             break;
           }
         }
       }
-      console.log(this.cartItems);
+      this.summaryCartItems(this.cartItems);
     });
 
     this.apiService.getCompanyInfo().subscribe((companies: Company[])=>{
@@ -64,6 +61,24 @@ export class HeaderComponent implements OnInit {
     this.apiService.getSubcategory().subscribe((subcategories: Subcategory[])=>{
       this.subcategories = subcategories;
     });
+  }
+
+  removeCartItems(item){
+    var index = this.cartItems.indexOf(item);
+    this.cartItems.splice(index, 1);   
+    localStorage.setItem('carts', JSON.stringify(this.cartItems));
+    this.summaryCartItems(this.cartItems);
+  }
+
+  summaryCartItems(products){
+    this.cartItemsInfo.count = 0;
+    this.cartItemsInfo.total_price = 0;
+
+    for(var i = 0; i < products.length; i++){
+        var item = products[i];
+        this.cartItemsInfo.count++;
+        this.cartItemsInfo.total_price += (parseInt(item.price)*item.quantity);
+    }
   }
 
   getSubcategoryByCategoryId(categoryId){
