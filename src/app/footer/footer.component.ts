@@ -14,6 +14,10 @@ export class FooterComponent implements OnInit {
   constructor(private apiService: ApiService) { }
 
   ngOnInit() {
+    this.getCompany();
+  }
+
+  getCompany(){
     this.apiService.getCompanyInfo().subscribe((companies: Company[])=>{
       if(companies.length > 0)
       {

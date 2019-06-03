@@ -29,23 +29,21 @@ export class HeaderComponent implements OnInit {
 
   ngOnInit() {
 
-    var _cartItems = localStorage.getItem('carts');
-    var productIds = _cartItems != undefined ? JSON.parse(_cartItems) : [];
-    this.apiService.getProduct().subscribe((products: Product[])=>{
-      this.products = products;
-      for(var i = 0; i < productIds.length; i++){
-        for(var j = 0; j < products.length; j++){
-          if(products[j].id == productIds[i].id){
-            var item = products[j];
-            item.quantity = productIds[i].quantity
-            this.cartItems.push(item);
-            break;
-          }
-        }
-      }
-      this.summaryCartItems(this.cartItems);
-    });
+    
+    this.getProducts();
 
+    this.getCompany();
+
+    this.getSubCategory();
+  }
+
+  getSubCategory(){
+    this.apiService.getSubcategory().subscribe((subcategories: Subcategory[])=>{
+      this.subcategories = subcategories;
+    });
+  }
+
+  getCompany(){
     this.apiService.getCompanyInfo().subscribe((companies: Company[])=>{
       if(companies.length > 0)
       {
@@ -57,9 +55,27 @@ export class HeaderComponent implements OnInit {
         }
       }
     });
- 
-    this.apiService.getSubcategory().subscribe((subcategories: Subcategory[])=>{
-      this.subcategories = subcategories;
+  }
+
+  getProducts(){
+    this.apiService.getProduct().subscribe((products: Product[])=>{
+      this.products = products;
+
+      //Get Cart Items
+      var _cartItems = localStorage.getItem('carts');
+      var productIds = _cartItems != undefined ? JSON.parse(_cartItems) : [];
+      for(var i = 0; i < productIds.length; i++){
+        for(var j = 0; j < products.length; j++){
+          if(products[j].id == productIds[i].id){
+            var item = products[j];
+            item.quantity = productIds[i].quantity
+            this.cartItems.push(item);
+            break;
+          }
+        }
+      }
+      this.summaryCartItems(this.cartItems);
+
     });
   }
 

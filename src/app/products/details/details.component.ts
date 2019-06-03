@@ -51,21 +51,27 @@ export class DetailsComponent implements OnInit {
       this.id = parseInt(params.get("id"));
     })
     if(this.id > 0){
-      this.apiService.getProduct().subscribe((products: Product[])=>{
-        for(var i = 0; i < products.length; i++){
-          if(products[i].id == this.id){
-            this.product = products[i];
-            break;
-          }
-        }
-      })
+      this.getProducts();
     }else{
       this.product = this.selectedProduct;
-    }
+    } 
+    this.getSubCategory();
+  }
 
+  getProducts(){
+    this.apiService.getProduct().subscribe((products: Product[])=>{
+      for(var i = 0; i < products.length; i++){
+        if(products[i].id == this.id){
+          this.product = products[i];
+          break;
+        }
+      }
+    })
+  }
+
+  getSubCategory(){
     this.apiService.getSubcategory().subscribe((subcategories: Subcategory[])=>{
-      this.subcategories = subcategories;
-      //console.log("this.subcategories", this.subcategories);
+      this.subcategories = subcategories;;
     });
   }
 

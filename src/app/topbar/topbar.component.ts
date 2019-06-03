@@ -14,6 +14,10 @@ export class TopbarComponent implements OnInit {
   company:  Company;
 
   ngOnInit() {
+    this.getCompany();
+  }
+
+  getCompany(){
     this.apiService.getCompanyInfo().subscribe((companies: Company[])=>{
       if(companies.length > 0)
       {

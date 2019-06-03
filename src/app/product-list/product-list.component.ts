@@ -32,6 +32,12 @@ export class ProductListComponent implements OnInit {
         this.subcategory_id = parseInt(params.get("subcategory_id"));
     })
 
+    this.getProducts();
+
+    this.getSubCategory();
+  }
+
+  getProducts(){
     this.apiService.getProduct().subscribe((products: Product[])=>{
       this.products = products;
       if(this.category_id && this.subcategory_id){
@@ -41,7 +47,9 @@ export class ProductListComponent implements OnInit {
         this.products = this.getProductByCategoryId(this.category_id);
       }
     });
+  }
 
+  getSubCategory(){
     this.apiService.getSubcategory().subscribe((subcategories: Subcategory[])=>{
       this.subcategories = subcategories;
     });
