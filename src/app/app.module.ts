@@ -18,6 +18,9 @@ import { FooterComponent } from './footer/footer.component';
 import { ProductsComponent } from './products/products.component';
 import { DetailsComponent } from './products/details/details.component';
 import { CartListComponent } from './cart-list/cart-list.component';
+import { RecruitmentComponent } from './recruitment/recruitment.component';
+import { ContactsComponent } from './contacts/contacts.component';
+import { NewsComponent } from './news/news.component';
 
 @NgModule({
   declarations: [
@@ -31,7 +34,10 @@ import { CartListComponent } from './cart-list/cart-list.component';
     FooterComponent,
     ProductsComponent,
     DetailsComponent,
-    CartListComponent
+    CartListComponent,
+    RecruitmentComponent,
+    ContactsComponent,
+    NewsComponent
   ],
   imports: [
     BrowserModule,

@@ -4,13 +4,19 @@ import { HomeComponent } from './home/home.component';
 import { ProductsComponent } from './products/products.component';
 import { DetailsComponent } from './products/details/details.component';
 import { CartListComponent } from './cart-list/cart-list.component';
+import { RecruitmentComponent } from './recruitment/recruitment.component';
+import { ContactsComponent } from './contacts/contacts.component';
+import { NewsComponent } from './news/news.component';
 
 const routes: Routes = [
   { path: "", component: HomeComponent},
   { path: "products/:category_id", component: ProductsComponent},
   { path: "products/:category_id/:subcategory_id", component: ProductsComponent},
   { path: "product/:id", component: DetailsComponent},
-  { path: "cart", component: CartListComponent}
+  { path: "cart", component: CartListComponent},
+  { path: "recruitment", component: RecruitmentComponent},
+  { path: "contact", component: ContactsComponent},
+  { path: "news", component: NewsComponent}
 ];
 
 @NgModule({
