@@ -13,8 +13,12 @@ import { ActivatedRoute, Router } from '@angular/router';
 })
 export class HeaderComponent implements OnInit {
 
-  constructor(private route: ActivatedRoute, private apiService: ApiService, private router: Router, private DomSanitizer: DomSanitizer) {
-    this.router.routeReuseStrategy.shouldReuseRoute = () => false;
+  constructor(
+    private route: ActivatedRoute,
+    private apiService: ApiService, 
+    private router: Router, 
+    private DomSanitizer: DomSanitizer) {
+      this.router.routeReuseStrategy.shouldReuseRoute = () => false;
    }
 
   products:  Product[];
@@ -28,12 +32,8 @@ export class HeaderComponent implements OnInit {
   }
 
   ngOnInit() {
-
-    
     this.getProducts();
-
     this.getCompany();
-
     this.getSubCategory();
   }
 
@@ -119,6 +119,7 @@ export class HeaderComponent implements OnInit {
 
   getProductBySubCategoryIdAndCategoryId(subCategoryId, categoryId){
     let products = [];
+    let count = 0;
     for(let i = 0; i < this.products.length; i++){
         if(this.products[i].category_id == categoryId && this.products[i].subcategory_id == subCategoryId){
           products.push(this.products[i]);

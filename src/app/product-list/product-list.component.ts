@@ -4,8 +4,7 @@ import { Product } from '../product';
 import { Company } from '../company';
 import { Subcategory } from '../subcategory';
 import { DomSanitizer } from '@angular/platform-browser';
-import { ActivatedRoute, } from "@angular/router";
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router} from "@angular/router";
 
 @Component({
   selector: 'app-product-list',
@@ -21,19 +20,20 @@ export class ProductListComponent implements OnInit {
   category_id: number;
   subcategory_id: number
 
-  constructor(private route: ActivatedRoute, private router: Router, private apiService: ApiService, private DomSanitizer: DomSanitizer) { 
-    this.router.routeReuseStrategy.shouldReuseRoute = () => false;
+  constructor(
+    private route: ActivatedRoute, 
+    private router: Router, 
+    private apiService: ApiService,
+    private DomSanitizer: DomSanitizer) { 
+    //this.router.routeReuseStrategy.shouldReuseRoute = () => false;
   }
 
   ngOnInit() {
-
     this.route.paramMap.subscribe(params => {
         this.category_id = parseInt(params.get("category_id"));
         this.subcategory_id = parseInt(params.get("subcategory_id"));
     })
-
     this.getProducts();
-
     this.getSubCategory();
   }
 

@@ -59,7 +59,7 @@
                       <div class="pi-img-wrapper">
                         <a routerLink="/product/{{item.id}}"><img [src]="DomSanitizer.bypassSecurityTrustUrl(item.image_base64)" class="img-responsive productList-image" alt="{{item.name}}"></a>
                       </div>
-                      <h3 class="productList-title"><a href="#">{{item.name}}</a></h3>
+                      <h3 class="productList-title"><a routerLink="/product/{{item.id}}">{{item.name}}</a></h3>
                       <div class="pi-price">{{item.price | currency:item.unit}}</div>
                       <!--
                         "Currency code"  ISO 4217
@@ -74,38 +74,17 @@
             </li>
           </ul>
         </li>
-        <li class="dropdown dropdown-megamenu">
-            <a class="dropdown-toggle" data-toggle="dropdown" data-target="#" href="javascript:;">
-              Mỹ Phẩm Thiên Nhiên MOCHA
-              
-            </a>
-            <ul class="dropdown-menu">
-              <li>
-                <div class="header-navigation-content">
-                  <div class="row" *ngIf="subcategories != undefined">
-                    <div class="col-md-4 header-navigation-col" *ngFor="let sub of getSubcategoryByCategoryId(2)">
-                      <h4><a routerLink="products/{{sub.category_id}}/{{sub.id}}">{{sub.name}}</a></h4>
-                      <ul *ngIf="products != undefined">
-                        <li *ngFor="let p of getProductBySubCategoryIdAndCategoryId(sub.id, sub.category_id)" style="overflow: hidden;">
-                          <a routerLink="product/{{p.id}}">{{p.name}}</a>
-                        </li>
-                      </ul>
-                    </div>
-                    <!--
-                    <div class="col-md-12 nav-brands">
-                      <ul>
-                        <li><a href="#"><img title="esprit" alt="esprit" src="../../assets/frontend/pages/img/brands/esprit.jpg"></a></li>
-                        <li><a href="#"><img title="gap" alt="gap" src="../../assets/frontend/pages/img/brands/gap.jpg"></a></li>
-                        <li><a href="#"><img title="next" alt="next" src="../../assets/frontend/pages/img/brands/next.jpg"></a></li>
-                        <li><a href="#"><img title="puma" alt="puma" src="../../assets/frontend/pages/img/brands/puma.jpg"></a></li>
-                        <li><a href="#"><img title="zara" alt="zara" src="../../assets/frontend/pages/img/brands/zara.jpg"></a></li>
-                      </ul>
-                    </div>
-                    -->
-                  </div>
-                </div>
-              </li>
-            </ul>
+        <li class="dropdown">
+          <a class="dropdown-toggle" data-toggle="dropdown" data-target="#" href="javascript:;">
+            Mỹ Phẩm Thiên Nhiên MOCHA
+          </a>
+          <!-- BEGIN DROPDOWN MENU -->
+          <ul class="dropdown-menu" *ngIf="subcategories != undefined">
+            <li class="dropdown-submenu" *ngFor="let sub of getSubcategoryByCategoryId(2)">
+              <a routerLink="/products/{{sub.category_id}}/{{sub.id}}">{{sub.name}} </a>
+            </li>
+          </ul>
+          <!-- END DROPDOWN MENU -->
         </li>
         <li>
           <a routerLink="/recruitment">

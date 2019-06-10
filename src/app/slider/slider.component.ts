@@ -38,7 +38,7 @@ export class SliderComponent implements OnInit {
         "transition2d_right": 111,
         "transition2d_up": 112,
         "transition2d_down": 113,
-        "image": "slider1.png",
+        "image": "june2019/slider1.jpg",
         "type": 1
       },
       {
@@ -49,7 +49,7 @@ export class SliderComponent implements OnInit {
         "transition2d_right": 93,
         "transition2d_up": 105,
         "transition2d_down": 0,
-        "image": "slider2.jpg",
+        "image": "june2019/slider2.jpg",
         "type": 2
       },
       {
@@ -60,7 +60,7 @@ export class SliderComponent implements OnInit {
         "transition2d_right": 111,
         "transition2d_up": 112,
         "transition2d_down": 113,
-        "image": "slider3.jpg",
+        "image": "june2019/slider3.jpg",
         "type": 3
       },
       {
@@ -71,7 +71,18 @@ export class SliderComponent implements OnInit {
         "transition2d_right": 111,
         "transition2d_up": 112,
         "transition2d_down": 113,
-        "image": "slider4.jpg",
+        "image": "june2019/slider4.jpg",
+        "type": 4
+      },
+      {
+        "title": "Slider 5",
+        "offsetxin": "right",
+        "slidedelay": 7000,
+        "transition2d_left": 110,
+        "transition2d_right": 111,
+        "transition2d_up": 112,
+        "transition2d_down": 113,
+        "image": "june2019/slider5.jpg",
         "type": 4
       }
     ]  
