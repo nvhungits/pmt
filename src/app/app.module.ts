@@ -4,6 +4,7 @@ import { NgModule } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from  '@angular/forms';
 import { HashLocationStrategy, LocationStrategy } from '@angular/common';
+import { LivechatWidgetModule } from '@livechat/angular-widget';
 
 
 import { AppRoutingModule } from './app-routing.module';
@@ -43,7 +44,8 @@ import { NewsComponent } from './news/news.component';
     BrowserModule,
     HttpClientModule,
     FormsModule,
-    AppRoutingModule
+    AppRoutingModule,
+    LivechatWidgetModule
   ],
   providers: [
     {
