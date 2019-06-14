@@ -22,6 +22,7 @@ import { CartListComponent } from './cart-list/cart-list.component';
 import { RecruitmentComponent } from './recruitment/recruitment.component';
 import { ContactsComponent } from './contacts/contacts.component';
 import { NewsComponent } from './news/news.component';
+import { ViewNewsComponent } from './news/view-news/view-news.component';
 
 @NgModule({
   declarations: [
@@ -38,7 +39,8 @@ import { NewsComponent } from './news/news.component';
     CartListComponent,
     RecruitmentComponent,
     ContactsComponent,
-    NewsComponent
+    NewsComponent,
+    ViewNewsComponent
   ],
   imports: [
     BrowserModule,
