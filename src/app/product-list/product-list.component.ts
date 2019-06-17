@@ -25,7 +25,7 @@ export class ProductListComponent implements OnInit {
     private router: Router, 
     private apiService: ApiService,
     private DomSanitizer: DomSanitizer) { 
-    //this.router.routeReuseStrategy.shouldReuseRoute = () => false;
+    this.router.routeReuseStrategy.shouldReuseRoute = () => false;
   }
 
   ngOnInit() {

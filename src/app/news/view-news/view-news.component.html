@@ -7,7 +7,7 @@
     <!-- BEGIN SIDEBAR & CONTENT -->
     <div class="row margin-bottom-40">
       <!-- BEGIN CONTENT -->
-      <div class="col-md-12 col-sm-12">
+      <div class="col-md-12 col-sm-12" *ngIf="news != undefined">
         <h1>{{news.title}}</h1>
         <div class="content-page">
           <div class="row">
@@ -19,15 +19,15 @@
                   <div id="myCarousel" class="carousel slide">
                     <!-- Carousel items -->
                     <div class="carousel-inner">
-                      <div class="item">
-                        <img src="../../assets/frontend/pages/img/posts/img1.jpg" alt="">
+                      <div class="item active">
+                        <img [src]="DomSanitizer.bypassSecurityTrustUrl(news.image)" alt="">
                       </div>
                       <div class="item">
                         <!-- BEGIN VIDEO -->   
                         <iframe src="http://player.vimeo.com/video/56974716?portrait=0" style="width:100%; border:0" allowfullscreen="" height="259"></iframe>
                         <!-- END VIDEO -->   
                       </div>
-                      <div class="item active">
+                      <div class="item">
                         <img src="../../assets/frontend/pages/img/posts/img3.jpg" alt="">
                       </div>
                     </div>
@@ -44,7 +44,7 @@
               </div>
               <h2><a href="javascript:;">{{news.short_description}}</a></h2>
               <div>
-                {{news.description}}
+                <p [innerHTML]="DomSanitizer.bypassSecurityTrustHtml(news.description)"></p>
               </div>
               <ul class="blog-info">
                 <li><i class="fa fa-user"></i> By {{news.created_by}}</li>

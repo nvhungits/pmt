@@ -4,6 +4,7 @@ import { Product } from  './product';
 import { Company } from  './company';
 import { Subcategory } from  './subcategory';
 import { Observable } from  'rxjs';
+import { News } from './news';
 
 @Injectable({
   providedIn: 'root'
@@ -16,6 +17,10 @@ export class ApiService {
 
   getProduct(): Observable<Product[]>{
     return this.httpClient.get<Product[]>(`${this.PHP_API_SERVER}/product.php`);
+  }
+
+  getNews(): Observable<News[]>{
+    return this.httpClient.get<News[]>(`${this.PHP_API_SERVER}/news.php`);
   }
 
   getCompanyInfo(): Observable<Company[]>{

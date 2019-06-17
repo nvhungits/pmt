@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { News } from '../news';
+import { ApiService } from '../api.service';
+import { DomSanitizer } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-news',
@@ -11,24 +13,17 @@ export class NewsComponent implements OnInit {
   news: News[] = new Array<News>()
   newsTop1: News
 
-  constructor() { }
+  constructor(private apiService: ApiService, private DomSanitizer: DomSanitizer) { }
 
   ngOnInit() {
-    for(var i = 0; i < 7; i++){
-      this.news.push({
-        id: 1,
-        title: "HELLO " + i,
-        short_description: "Hello Title " + 1,
-        description: "AAA " + i,
-        tags: "hồng âm, phụ khoa, mỹ phẩm, mocha",
-        created: new Date().toLocaleDateString(),
-        views: Math.floor(Math.random() * 100),
-        comments_count: Math.floor(Math.random() * 10),
-        image: "img" + (i+1) + ".jpg",
-        created_by: "admin"
-      })
-    } 
-    this.newsTop1 = this.get1News()
+    this.getNews()
+  }
+
+  getNews(){
+    this.apiService.getNews().subscribe((news: News[])=>{
+      this.news = news;
+      this.newsTop1 = this.get1News()
+    });
   }
 
   get1News(){
