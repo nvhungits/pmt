@@ -53,23 +53,23 @@
                 <li><i class="fa fa-tags"></i> {{news.tags}}</li>
               </ul>
 
-              <h2>Comments</h2>
+              <h2>Bình Luận</h2>
               <div class="comments">
                 <div class="media">                    
                   <a href="javascript:;" class="pull-left">
                   <img src="../../assets/frontend/pages/img/people/img1-small.jpg" alt="" class="media-object">
                   </a>
                   <div class="media-body">
-                    <h4 class="media-heading">Media heading <span>5 hours ago / <a href="javascript:;">Reply</a></span></h4>
-                    <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
+                    <h4 class="media-heading">Amin PMT <span>5 giờ trước / <a href="javascript:;">Trả lời</a></span></h4>
+                    <p>Sản phẩm phúc minh tâm rất tốt </p>
                     <!-- Nested media object -->
                     <div class="media">
                       <a href="javascript:;" class="pull-left">
                       <img src="../../assets/frontend/pages/img/people/img2-small.jpg" alt="" class="media-object">
                       </a>
                       <div class="media-body">
-                        <h4 class="media-heading">Media heading <span>17 hours ago / <a href="javascript:;">Reply</a></span></h4>
-                        <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
+                        <h4 class="media-heading">Admin MOCHA<span>17 giờ trước / <a href="javascript:;">Trả lời</a></span></h4>
+                        <p>Sản phẩm mocha rất tốt </p>
                       </div>
                     </div>
                     <!--end media-->                      
@@ -78,8 +78,8 @@
                       <img src="../../assets/frontend/pages/img/people/img3-small.jpg" alt="" class="media-object">
                       </a>
                       <div class="media-body">
-                        <h4 class="media-heading">Media heading <span>2 days ago / <a href="javascript:;">Reply</a></span></h4>
-                        <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
+                        <h4 class="media-heading">Admin <span>2 ngày trước / <a href="javascript:;">Trả lời</a></span></h4>
+                        <p>Tất cả các sản phẩm phúc minh tâm và mocha rất tốt </p>
                       </div>
                     </div>
                     <!--end media-->
@@ -91,18 +91,18 @@
                   <img src="../../assets/frontend/pages/img/people/img4-small.jpg" alt="" class="media-object">
                   </a>
                   <div class="media-body">
-                    <h4 class="media-heading">Media heading <span>July 25,2013 / <a href="javascript:;">Reply</a></span></h4>
-                    <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
+                    <h4 class="media-heading">Khách hàng<span>Tháng 6 25,2013 / <a href="javascript:;">Trả lời</a></span></h4>
+                    <p>Sản phẩm PMT và mỹ phẩm MOCHA còn hàng không admin. </p>
                   </div>
                 </div>
                 <!--end media-->
               </div>
 
               <div class="post-comment padding-top-40">
-                <h3>Leave a Comment</h3>
+                <h3>Gửi Bình Luận</h3>
                 <form role="form">
                   <div class="form-group">
-                    <label>Name</label>
+                    <label>Tên</label>
                     <input class="form-control" type="text">
                   </div>
 
@@ -112,10 +112,10 @@
                   </div>
 
                   <div class="form-group">
-                    <label>Message</label>
+                    <label>Tin Nhắn</label>
                     <textarea class="form-control" rows="8"></textarea>
                   </div>
-                  <p><button class="btn btn-primary" type="submit">Post a Comment</button></p>
+                  <p><button class="btn btn-primary" type="submit">Gửi</button></p>
                 </form>
               </div>                      
             </div>
@@ -124,50 +124,29 @@
             <!-- BEGIN RIGHT SIDEBAR -->            
             <div class="col-md-3 col-sm-3 blog-sidebar">
               <!-- CATEGORIES START -->
-              <h2 class="no-top-space">Categories</h2>
+              <h2 class="no-top-space">Sản phẩm</h2>
               <ul class="nav sidebar-categories margin-bottom-40">
-                <li><a href="javascript:;">London (18)</a></li>
-                <li><a href="javascript:;">Moscow (5)</a></li>
-                <li class="active"><a href="javascript:;">Paris (12)</a></li>
-                <li><a href="javascript:;">Berlin (7)</a></li>
-                <li><a href="javascript:;">Istanbul (3)</a></li>
+                <li><a routerLink="/products/1">Phúc Minh Tâm</a></li>
+                <li><a routerLink="/products/2">Mỹ phẩm MOCHA</a></li>
               </ul>
               <!-- CATEGORIES END -->
 
               <!-- BEGIN RECENT NEWS -->                            
-              <h2>Recent News</h2>
-              <div class="recent-news margin-bottom-10">
-                <div class="row margin-bottom-10">
+              <h2>Bài viết gần nhất</h2>
+              <div class="recent-news margin-bottom-10" *ngIf="newsTop3 != undefined">
+                <div class="row margin-bottom-10" *ngFor="let newsTop3Item of newsTop3">
                   <div class="col-md-3">
-                    <img class="img-responsive" alt="" src="../../assets/frontend/pages/img/people/img2-large.jpg">                        
+                    <img class="img-responsive" alt="" [src]="DomSanitizer.bypassSecurityTrustUrl(newsTop3Item.image)">                        
                   </div>
                   <div class="col-md-9 recent-news-inner">
-                    <h3><a href="javascript:;">Letiusto gnissimos</a></h3>
-                    <p>Decusamus tiusto odiodig nis simos ducimus qui sint</p>
-                  </div>                        
-                </div>
-                <div class="row margin-bottom-10">
-                  <div class="col-md-3">
-                    <img class="img-responsive" alt="" src="../../assets/frontend/pages/img/people/img1-large.jpg">                        
-                  </div>
-                  <div class="col-md-9 recent-news-inner">
-                    <h3><a href="javascript:;">Deiusto anissimos</a></h3>
-                    <p>Decusamus tiusto odiodig nis simos ducimus qui sint</p>
-                  </div>                        
-                </div>
-                <div class="row margin-bottom-10">
-                  <div class="col-md-3">
-                    <img class="img-responsive" alt="" src="../../assets/frontend/pages/img/people/img3-large.jpg">                        
-                  </div>
-                  <div class="col-md-9 recent-news-inner">
-                    <h3><a href="javascript:;">Tesiusto baissimos</a></h3>
-                    <p>Decusamus tiusto odiodig nis simos ducimus qui sint</p>
+                    <h3><a href="javascript:;">{{newsTop3Item.title}}</a></h3>
+                    <p>{{newsTop3Item.short_description}}</p>
                   </div>                        
                 </div>
               </div>
               <!-- END RECENT NEWS -->                            
 
-              <!-- BEGIN BLOG TALKS -->
+              <!-- BEGIN BLOG TALKS 
               <div class="blog-talks margin-bottom-30">
                 <h2>Popular Talks</h2>
                 <div class="tab-style-1">
@@ -186,11 +165,11 @@
                   </div>
                 </div>
               </div>                            
-              <!-- END BLOG TALKS -->
+               END BLOG TALKS -->
 
               <!-- BEGIN BLOG PHOTOS STREAM -->
               <div class="blog-photo-stream margin-bottom-20">
-                <h2>Photos Stream</h2>
+                <h2>Hình ảnh</h2>
                 <ul class="list-unstyled">
                   <li><a href="javascript:;"><img alt="" src="../../assets/frontend/pages/img/people/img5-small.jpg"></a></li>
                   <li><a href="javascript:;"><img alt="" src="../../assets/frontend/pages/img/works/img1.jpg"></a></li>
@@ -207,15 +186,8 @@
               <!-- BEGIN BLOG TAGS -->
               <div class="blog-tags margin-bottom-20">
                 <h2>Tags</h2>
-                <ul>
-                  <li><a href="javascript:;"><i class="fa fa-tags"></i>OS</a></li>
-                  <li><a href="javascript:;"><i class="fa fa-tags"></i>Metronic</a></li>
-                  <li><a href="javascript:;"><i class="fa fa-tags"></i>Dell</a></li>
-                  <li><a href="javascript:;"><i class="fa fa-tags"></i>Conquer</a></li>
-                  <li><a href="javascript:;"><i class="fa fa-tags"></i>MS</a></li>
-                  <li><a href="javascript:;"><i class="fa fa-tags"></i>Google</a></li>
-                  <li><a href="javascript:;"><i class="fa fa-tags"></i>Keenthemes</a></li>
-                  <li><a href="javascript:;"><i class="fa fa-tags"></i>Twitter</a></li>
+                <ul *ngIf="tags != undefined">
+                  <li *ngFor="let tag of tags"><a href="javascript:;"><i class="fa fa-tags"></i>{{tag}}</a></li>
                 </ul>
               </div>
               <!-- END BLOG TAGS -->
