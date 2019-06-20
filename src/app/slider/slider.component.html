@@ -1,5 +1,5 @@
 <!-- BEGIN SLIDER -->
-<div class="page-slider margin-bottom-35">
+<div class="page-slider margin-bottom-35" *ngIf="filtersLoaded | async">
   <!-- LayerSlider start -->
   <div id="layerslider" style="width: 100%; height: 494px; margin: 0 auto;">
 
@@ -7,7 +7,7 @@
     <!-- slide start -->
     <div class="ls-slide ls-slide{{slider.type}}" *ngFor="let slider of sliders;let i = index;" data-ls="offsetxin: right; slidedelay:7000; transition2d:1;2;3;4">
 
-      <img src="https://phucminhtam.net/layerslider/{{slider.image}}" class="ls-bg" alt="{{slider.title}}">
+      <img [src]="DomSanitizer.bypassSecurityTrustUrl(slider.image)" class="ls-bg" alt="{{slider.title}}">
 
       <div class="ls-l ls-title" *ngIf="slider.textIsTrue == true" style="top: 10px; left: 33%; white-space: nowrap;color:red;" data-ls="
           fade: true; 

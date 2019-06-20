@@ -5,6 +5,7 @@ import { Company } from  './company';
 import { Subcategory } from  './subcategory';
 import { Observable } from  'rxjs';
 import { News } from './news';
+import { Image } from './image';
 
 @Injectable({
   providedIn: 'root'
@@ -21,6 +22,10 @@ export class ApiService {
 
   getNews(): Observable<News[]>{
     return this.httpClient.get<News[]>(`${this.PHP_API_SERVER}/news.php`);
+  }
+
+  getImages(): Observable<Image[]>{
+    return this.httpClient.get<Image[]>(`${this.PHP_API_SERVER}/image.php`);
   }
 
   getCompanyInfo(): Observable<Company[]>{
