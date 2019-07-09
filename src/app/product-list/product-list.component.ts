@@ -3,7 +3,7 @@ import { ApiService } from '../api.service';
 import { Product } from '../product';
 import { Company } from '../company';
 import { Subcategory } from '../subcategory';
-import { DomSanitizer } from '@angular/platform-browser';
+import { DomSanitizer, Title } from '@angular/platform-browser';
 import { ActivatedRoute, Router} from "@angular/router";
 
 @Component({
@@ -24,7 +24,9 @@ export class ProductListComponent implements OnInit {
     private route: ActivatedRoute, 
     private router: Router, 
     private apiService: ApiService,
-    private DomSanitizer: DomSanitizer) { 
+    private DomSanitizer: DomSanitizer,
+    private titleService: Title
+  ) { 
     this.router.routeReuseStrategy.shouldReuseRoute = () => false;
   }
 
@@ -108,6 +110,10 @@ export class ProductListComponent implements OnInit {
       });
     }
     localStorage.setItem('carts', JSON.stringify(cartItems));
+  }
+
+  changeTitle(item){
+    this.titleService.setTitle("Sản phẩm - " + item.name);
   }
 
 }

@@ -1,4 +1,4 @@
-import { BrowserModule } from '@angular/platform-browser';
+import { BrowserModule, Title } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
 import { HttpClientModule } from '@angular/common/http';
@@ -52,8 +52,9 @@ import { ViewNewsComponent } from './news/view-news/view-news.component';
   providers: [
     {
       provide: LocationStrategy, 
-      useClass: HashLocationStrategy
-    }
+      useClass: HashLocationStrategy,
+    },
+    Title
   ],
   bootstrap: [AppComponent]
 })
